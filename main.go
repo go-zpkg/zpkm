@@ -20,6 +20,8 @@ import (
 	"errors"
 	"fmt"
 	"io"
+
+	"github.com/go-aosp/hostenv"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -155,7 +157,31 @@ func parseArgs(argv []string) ([]string, flags) {
 	return pos, f
 }
 
-func main() { os.Exit(run(os.Args[1:])) }
+func main() {
+	// ⛔ ANDROID RESOLVES NO NAME WITHOUT THIS, AND NOTHING ELSE IS NEEDED.
+	// Android has no /etc/resolv.conf and its resolver lives behind libc,
+	// behind cgo — so a CGO_ENABLED=0 binary falls back to 127.0.0.1:53, where
+	// nothing listens, and every lookup dies with a connection refused while
+	// the network itself works. A Java host reads the real servers through
+	// ConnectivityManager and passes them in the environment; this installs a
+	// net.Resolver that talks to them. See github.com/go-aosp/hostenv.
+	//
+	// Measured on a Pixel 11 Pro Fold, Android 17: with this line, and with a
+	// hard-link fallback in the extractor (go-zpkg/artifact#236), `zpkm install
+	// -s lz4.org` and then `zpkm run lz4.org -- --version` both succeed on the
+	// phone. Without it the install dies resolving the pantry host.
+	//
+	// ⛔ InstallResolver AND NOT hostenv.Ready(). Ready() also refuses an empty
+	// HOME, which is right for a payload under an Android host and wrong here:
+	// a FROM-scratch container commonly has no HOME, so Ready() would make
+	// zpkm refuse to start in exactly the environment its README promises.
+	// And the severity cannot be gated on runtime.GOOS — a linux/arm64 build
+	// reports "linux" when it is running on Android.
+	//
+	// Off Android it reads an unset variable and changes nothing.
+	hostenv.InstallResolver()
+	os.Exit(run(os.Args[1:]))
+}
 
 // configError reports a load/parse failure of ~/.zpkg/config.hcl2, if any. It
 // is a var so tests can drive the startup-warning path.
