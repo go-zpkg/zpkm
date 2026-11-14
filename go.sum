@@ -6,6 +6,8 @@ github.com/apparentlymart/go-textseg/v17 v17.0.1 h1:bpMXRgQ5cEoRNuQke1a80/Nl6w3G
 github.com/apparentlymart/go-textseg/v17 v17.0.1/go.mod h1:fa8X4jgGeevslICIY6LcdjkSecWnXmYd9Lk34z/VxZs=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/go-aosp/hostenv v0.1.0 h1:x7PBoDnOv7mVH0gHp+5lt4KpDnWKaDJUdf+F7d8yLxc=
+github.com/go-aosp/hostenv v0.1.0/go.mod h1:mWc4s7Uu3u7llG9nqLwKeDloRx0Ef/oUBDaNlmQhuzQ=
 github.com/go-attest/sign v0.3.0 h1:eP0p9Hv7aD9uJYlTxo1iF+twdPlWl3a+8ELfob4MnJQ=
 github.com/go-attest/sign v0.3.0/go.mod h1:A1q1S7T2JsgkySnvl3+qoz9SDaI9eQi3ISxvt3KaevI=
 github.com/go-compressions/xz v0.1.0 h1:uBcHmr/IXwk5mNnuOIz4E2rU3aNl9mVOwIQjMgPy0g8=

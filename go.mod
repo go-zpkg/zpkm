@@ -2,7 +2,10 @@ module github.com/go-zpkg/zpkm
 
 go 1.27.4
 
-require github.com/go-zpkg/artifact v0.88.0
+require (
+	github.com/go-aosp/hostenv v0.1.0
+	github.com/go-zpkg/artifact v0.88.0
+)
 
 require (
 	github.com/agext/levenshtein v1.2.1 // indirect
