@@ -347,7 +347,7 @@ environment variable always overrides a value set here:
 ZPKG_DIST   = "oci://ghcr.io/go-zpkg/packages"  # signed registry (default)
 ZPKG_VERIFY = true                               # fail-closed signature check
 # ZPKG_DIR    = "/opt/zpkg"
-# ZPKG_PANTRY = "https://raw.githubusercontent.com/pkgxdev/pantry/main/projects"
+# ZPKG_RECIPES = "https://raw.githubusercontent.com/pkgxdev/pantry/main/projects"
 # OCI_TOKEN   = "..."                            # private-registry credentials
 ```
 

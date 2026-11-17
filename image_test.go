@@ -24,13 +24,13 @@ func TestWriteImage(t *testing.T) {
 			t.Errorf("Containerfile missing %q\n---\n%s", want, got)
 		}
 	}
-	// without -overlay, no ZPKG_PANTRY_OVERLAY line
-	if strings.Contains(got, "ZPKG_PANTRY_OVERLAY") {
+	// without -overlay, no ZPKG_RECIPES_OVERLAY line
+	if strings.Contains(got, "ZPKG_RECIPES_OVERLAY") {
 		t.Errorf("unexpected overlay env:\n%s", got)
 	}
 }
 
-// -overlay bakes an ENV ZPKG_PANTRY_OVERLAY line before COPY.
+// -overlay bakes an ENV ZPKG_RECIPES_OVERLAY line before COPY.
 func TestWriteImageOverlay(t *testing.T) {
 	var b strings.Builder
 	url := "https://raw.githubusercontent.com/go-zpkg/pantry-overlay/main/projects"
@@ -38,10 +38,10 @@ func TestWriteImageOverlay(t *testing.T) {
 		t.Fatalf("writeImage: %v", err)
 	}
 	got := b.String()
-	if !strings.Contains(got, "ENV ZPKG_PANTRY_OVERLAY="+url+"\n") {
+	if !strings.Contains(got, "ENV ZPKG_RECIPES_OVERLAY="+url+"\n") {
 		t.Errorf("overlay env missing:\n%s", got)
 	}
-	if strings.Index(got, "ZPKG_PANTRY_OVERLAY") > strings.Index(got, "COPY zpkm") {
+	if strings.Index(got, "ZPKG_RECIPES_OVERLAY") > strings.Index(got, "COPY zpkm") {
 		t.Errorf("overlay env must precede COPY:\n%s", got)
 	}
 }

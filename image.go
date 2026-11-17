@@ -36,7 +36,7 @@ import (
 func cmdImage(args []string) error {
 	fs := flag.NewFlagSet("image", flag.ContinueOnError)
 	fs.SetOutput(io.Discard)
-	overlay := fs.String("overlay", "", "bake ZPKG_PANTRY_OVERLAY=<url> into the image (corrected recipes consulted before the upstream pantry)")
+	overlay := fs.String("overlay", "", "bake ZPKG_RECIPES_OVERLAY=<url> into the image (corrected recipes consulted before the upstream pantry)")
 	glibc := fs.String("glibc", "", "bake ZPKG_GLIBC=<version> — the image installs and runs against exactly that glibc, e.g. -glibc 2.28 (default: whatever the host kernel supports)")
 	if err := fs.Parse(args); err != nil {
 		return err
@@ -57,7 +57,7 @@ func writeImage(w io.Writer, args []string, overlay, glibc string) error {
 	fmt.Fprintln(&b, "ENV ZPKG_DIR=/zpkg")
 	fmt.Fprintln(&b, "ENV HOME=/root")
 	if overlay != "" {
-		fmt.Fprintln(&b, "ENV ZPKG_PANTRY_OVERLAY="+overlay)
+		fmt.Fprintln(&b, "ENV ZPKG_RECIPES_OVERLAY="+overlay)
 	}
 	// A pinned glibc is baked as the environment variable artifact resolves the
 	// implicit C library with, so it holds for BOTH the RUN that installs the
