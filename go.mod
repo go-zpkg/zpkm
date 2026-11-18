@@ -4,7 +4,7 @@ go 1.27.4
 
 require (
 	github.com/go-aosp/hostenv v0.1.0
-	github.com/go-zpkg/artifact v0.88.0
+	github.com/go-zpkg/artifact v0.89.0
 )
 
 require (
@@ -12,13 +12,13 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/apparentlymart/go-textseg/v17 v17.0.1 // indirect
 	github.com/go-attest/sign v0.3.0 // indirect
-	github.com/go-compressions/xz v0.1.0 // indirect
+	github.com/go-compressions/xz v0.3.1 // indirect
 	github.com/hashicorp/hcl/v2 v2.25.0 // indirect
-	github.com/klauspost/compress v1.20.3 // indirect
+	github.com/klauspost/compress v1.20.4 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.1 // indirect
-	github.com/zclconf/go-cty v1.19.0 // indirect
+	github.com/zclconf/go-cty v1.20.0 // indirect
 	golang.org/x/crypto v0.57.0 // indirect
 	golang.org/x/mod v0.41.0 // indirect
 	golang.org/x/sync v0.24.0 // indirect
