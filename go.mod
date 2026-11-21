@@ -4,7 +4,7 @@ go 1.27.4
 
 require (
 	github.com/go-aosp/hostenv v0.1.0
-	github.com/go-zpkg/artifact v0.89.0
+	github.com/go-zpkg/artifact v0.91.0
 )
 
 require (
